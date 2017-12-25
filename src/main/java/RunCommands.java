@@ -31,6 +31,12 @@ public class RunCommands {
                     case "MULTIPLY":
                         calculate.multiply(getAmount(currentCommand));
                         break;
+                    case "SUBTRACT":
+                        calculate.subtract(getAmount(currentCommand));
+                        break;
+                    case "DIVIDE":
+                        calculate.divide(getAmount(currentCommand));
+                        break;
 
                     default:
                         System.out.println(String.format("Sorry command '%s' is not supported", whatWeDo));
