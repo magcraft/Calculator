@@ -28,7 +28,9 @@ public class CommonTests {
     @Test
     public void divideTest() {
         Calculate calculate = new Calculate();
+        calculate.apply(0);
         calculate.add(6);
+        assertFalse(calculate.divide(0));
         calculate.divide(2);
         assertEquals(3, calculate.amount);
     }

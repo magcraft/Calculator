@@ -1,21 +1,31 @@
 public class Calculate {
     int amount;
-    boolean newOblect;
+    private boolean newObject;
 
 
     public Calculate() {
         this.amount = 0;
-        this.newOblect = true;
+        this.newObject = true;
     }
 
     private boolean isNew() {
-        return this.newOblect;
+        return this.newObject;
+    }
+
+    private boolean equalsByZero(int input) {
+        return input == 0;
+    }
+
+    public boolean equals(int input) {
+        Calculate newOne = new Calculate();
+        newOne.apply(input);
+        return amount == newOne.amount;
     }
 
     boolean apply(int amount) {
         if (isNew()) {
             this.amount = amount;
-            this.newOblect = false;
+            this.newObject = false;
             return true;
         }
         return false;
@@ -29,7 +39,14 @@ public class Calculate {
         return false;
     }
 
-    void divide(int amount) {
-        this.amount /= amount;
+    boolean divide(int amount) {
+        if (equalsByZero(amount)) {
+            return false;
+        }
+        if (!isNew()) {
+            this.amount /= amount;
+            return true;
+        }
+        return false;
     }
 }
