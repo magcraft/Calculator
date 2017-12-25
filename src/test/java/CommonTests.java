@@ -3,7 +3,7 @@ import static org.junit.Assert.assertEquals;
 
 public class CommonTests {
     @Test
-    public void apply_Test() {
+    public void applyTest() {
         Calculate calculate = new Calculate();
         calculate.apply(5);
         assertEquals(5, calculate.amount);
@@ -12,11 +12,19 @@ public class CommonTests {
     }
 
     @Test
-    public void add_Test() {
+    public void addTest() {
         Calculate calculate = new Calculate();
         calculate.add(4);
         assertEquals(4, calculate.amount);
+        calculate.add(5);
+        assertEquals(9, calculate.amount);
+    }
+
+    @Test
+    public void divideTest() {
+        Calculate calculate = new Calculate();
         calculate.add(4);
-        assertEquals(8, calculate.amount);
+        calculate.divide(2);
+        assertEquals(2, calculate.amount );
     }
 }
