@@ -1,7 +1,6 @@
 public class Calculate {
-    int amount;
+    private int amount;
     private boolean newObject;
-
 
     public Calculate() {
         this.amount = 0;

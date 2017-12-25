@@ -1,5 +1,5 @@
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -8,7 +8,7 @@ public class CommonTests {
     public void applyTest() {
         Calculate calculate = new Calculate();
         calculate.apply(5);
-        assertEquals(5, calculate.amount);
+        assertTrue(calculate.equals(5));
     }
 
     @Test
@@ -16,7 +16,7 @@ public class CommonTests {
         Calculate calculate = new Calculate();
         calculate.apply(5);
         calculate.apply(6);
-        assertEquals(5, calculate.amount);
+        assertTrue(calculate.equals(5));
     }
 
     @Test
@@ -31,14 +31,14 @@ public class CommonTests {
         Calculate calculate = new Calculate();
         assertTrue(calculate.apply(0));
         assertTrue(calculate.add(2));
-        assertEquals(2, calculate.amount);
+        assertTrue(calculate.equals(2));
     }
 
     @Test
     public void addBeforeApplyTest() {
         Calculate calculate = new Calculate();
         assertFalse(calculate.add(4));
-        assertEquals(0, calculate.amount);
+        assertTrue(calculate.equals(0));
     }
 
 
@@ -47,7 +47,7 @@ public class CommonTests {
         Calculate calculate = new Calculate();
         calculate.apply(6);
         calculate.divide(2);
-        assertEquals(3, calculate.amount);
+        assertTrue(calculate.equals(3));
     }
 
     @Test
