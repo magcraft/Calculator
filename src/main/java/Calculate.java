@@ -21,8 +21,12 @@ public class Calculate {
         return false;
     }
 
-    void add(int amount) {
-        this.amount += amount;
+    boolean add(int amount) {
+        if (!(isNew())) {
+            this.amount += amount;
+            return true;
+        }
+        return false;
     }
 
     void divide(int amount) {
