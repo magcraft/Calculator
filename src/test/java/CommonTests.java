@@ -1,5 +1,6 @@
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class CommonTests {
     @Test
@@ -7,8 +8,8 @@ public class CommonTests {
         Calculate calculate = new Calculate();
         calculate.apply(5);
         assertEquals(5, calculate.amount);
-        calculate.apply(6);
-        assertEquals(6, calculate.amount);
+        assertFalse(calculate.apply(6));
+        assertEquals(5, calculate.amount);
     }
 
     @Test
@@ -23,8 +24,8 @@ public class CommonTests {
     @Test
     public void divideTest() {
         Calculate calculate = new Calculate();
-        calculate.add(4);
+        calculate.add(6);
         calculate.divide(2);
-        assertEquals(2, calculate.amount);
+        assertEquals(3, calculate.amount);
     }
 }
