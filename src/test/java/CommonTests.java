@@ -41,7 +41,6 @@ public class CommonTests {
         assertTrue(calculate.equals(0));
     }
 
-
     @Test
     public void divideTest() {
         Calculate calculate = new Calculate();
