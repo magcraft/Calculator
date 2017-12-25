@@ -8,46 +8,70 @@ public class RunCommands {
     public static int runCommands(LinkedList<String> myList) {
         Calculate calculate = new Calculate();
         String[] currentCommand = new String[COMMAND_ARGUMENTS];
+        boolean passed;
+        StringBuilder errorMessage = new StringBuilder();
 
+        passed = proceedApply(myList, calculate);
+        if (passed) {
+            for (int i = 0; i < myList.size()-1; i++) {
+                String currentLine = myList.get(i);
+                if (commandFormatIsOk(currentLine)) {
+                    currentCommand = getSplitMyCommand(currentLine);
+                    String whatWeDo = currentCommand[0].toUpperCase();
+                    int amount = getAmount(currentCommand);
+                    switch (whatWeDo) {
+                        case "ADD":
+                            passed = calculate.add(amount);
+                            break;
+                        case "MULTIPLY":
+                            passed = calculate.multiply(amount);
+                            break;
+                        case "SUBTRACT":
+                            passed = calculate.subtract(amount);
+                            break;
+                        case "DIVIDE":
+                            passed = calculate.divide(amount);
+                            break;
+
+                        default:
+                            errorMessage.append(String.format("Sorry command '%s' is not supported", whatWeDo));
+                            break;
+                    }
+                    if (!(passed)) {
+                        errorMessage.append(String.format("Something is wrong, with command '%s'", currentLine));
+                        break;
+                    }
+                } else {
+                    return -1;
+                }
+            }
+            if (passed) {
+                return calculate.getAmount();
+            }
+        }
+        if (errorMessage.length() != 0) {
+            System.out.println(errorMessage.toString());
+        }
+        return -1;
+    }
+
+    private static boolean proceedApply(LinkedList<String> myList, Calculate calculate) {
+        String[] currentCommand;
+        boolean passed;
         String applyString = myList.getLast();
         if (applyString.toUpperCase().startsWith("APPLY")) {
             if (commandFormatIsOk(applyString)) {
                 currentCommand = getSplitMyCommand(applyString);
-                calculate.apply(getAmount(currentCommand));
+                passed = calculate.apply(getAmount(currentCommand));
             } else {
-                return -1;
+                System.out.println(String.format("Sorry an argument for command '%s' is missing!", applyString));
+                return false;
             }
+        } else {
+            System.out.println(String.format("Sorry the last command has to be Apply, but was '%s'", applyString));
+            return false;
         }
-
-        for (int i = 0; i < myList.size()-1; i++) {
-            String currentLine = myList.get(i);
-            if (commandFormatIsOk(currentLine)) {
-                currentCommand = getSplitMyCommand(currentLine);
-                String whatWeDo = currentCommand[0].toUpperCase();
-                switch (whatWeDo) {
-                    case "ADD":
-                        calculate.add(getAmount(currentCommand));
-                        break;
-                    case "MULTIPLY":
-                        calculate.multiply(getAmount(currentCommand));
-                        break;
-                    case "SUBTRACT":
-                        calculate.subtract(getAmount(currentCommand));
-                        break;
-                    case "DIVIDE":
-                        calculate.divide(getAmount(currentCommand));
-                        break;
-
-                    default:
-                        System.out.println(String.format("Sorry command '%s' is not supported", whatWeDo));
-                        break;
-                }
-
-            } else {
-                return -1;
-            }
-        }
-        return calculate.getAmount();
+        return passed;
     }
 
     private static String[] getSplitMyCommand(String applyString) {
@@ -59,9 +83,6 @@ public class RunCommands {
     }
 
     private static boolean commandFormatIsOk(String command) {
-        if (COMMAND_ARGUMENTS == command.split(PARAMETER_DIVIDER).length) {
-            return true;
-        }
-        return false;
+        return COMMAND_ARGUMENTS == command.split(PARAMETER_DIVIDER).length;
     }
 }

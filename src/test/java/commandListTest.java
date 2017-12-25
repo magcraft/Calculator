@@ -12,8 +12,8 @@ public class commandListTest {
         LinkedList<String> myList = new LinkedList<>();
         myList.add("apply 3");
 
-        int acctual = RunCommands.runCommands(myList);
-        assertEquals(expected, acctual);
+        int actual = RunCommands.runCommands(myList);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -24,6 +24,27 @@ public class commandListTest {
         int acctual = RunCommands.runCommands(myList);
         assertEquals(expected, acctual);
     }
+
+    @Test
+    public void wrongCommand2FormatTest() {
+        int expected = -1;
+        LinkedList<String> myList = new LinkedList<>();
+        myList.add("add ");
+        myList.add("apply 1");
+        int acctual = RunCommands.runCommands(myList);
+        assertEquals(expected, acctual);
+    }
+
+    @Test
+    public void wrongCommandOrderTest() {
+        int expected = -1;
+        LinkedList<String> myList = new LinkedList<>();
+        myList.add("apply 1");
+        myList.add("add 2");
+        int acctual = RunCommands.runCommands(myList);
+        assertEquals(expected, acctual);
+    }
+
 
     @Test
     public void applyWithAddTest() {
@@ -73,4 +94,14 @@ public class commandListTest {
         assertEquals(expected, acctual);
     }
 
+    @Test
+    public void divideByZero() {
+        int expected = -1;
+        LinkedList<String> myList = new LinkedList<>();
+        myList.add("divide 0");
+        myList.add("apply 4");
+
+        int acctual = RunCommands.runCommands(myList);
+        assertEquals(expected, acctual);
+    }
 }
