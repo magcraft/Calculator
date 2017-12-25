@@ -64,10 +64,30 @@ public class CommonTests {
     }
 
     @Test
-    public void substractTest() {
+    public void subtractTest() {
         Calculate calculate = new Calculate();
         calculate.apply(10);
         calculate.subtract(5);
         assertTrue(calculate.equals(5));
+    }
+
+    @Test
+    public void subtractBeforeApplyTest() {
+        Calculate calculate = new Calculate();
+        assertFalse(calculate.subtract(5));
+    }
+
+    @Test
+    public void multiplyTest() {
+        Calculate calculate = new Calculate();
+        calculate.apply(2);
+        calculate.multiply(4);
+        assertTrue(calculate.equals(8));
+    }
+
+    @Test
+    public void multiplyBeforeApply() {
+        Calculate calculate = new Calculate();
+        assertFalse(calculate.multiply(4));
     }
 }

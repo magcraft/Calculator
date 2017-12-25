@@ -52,4 +52,20 @@ public class Calculate {
         }
         return false;
     }
+
+    boolean subtract(int amount) {
+        if (!isNew()) {
+            this.amount -= amount;
+            return true;
+        }
+        return false;
+    }
+
+    boolean multiply(int amount) {
+        if (!isNew()) {
+            this.amount *= amount;
+            return true;
+        }
+        return false;
+    }
 }
