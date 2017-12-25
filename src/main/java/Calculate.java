@@ -12,4 +12,8 @@ public class Calculate {
     void add(int amount) {
         this.amount += amount;
     }
+
+    void divide(int amount) {
+        this.amount /= amount;
+    }
 }

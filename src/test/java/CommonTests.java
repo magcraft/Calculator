@@ -25,6 +25,6 @@ public class CommonTests {
         Calculate calculate = new Calculate();
         calculate.add(4);
         calculate.divide(2);
-        assertEquals(2, calculate.amount );
+        assertEquals(2, calculate.amount);
     }
 }
