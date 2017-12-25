@@ -68,4 +68,8 @@ public class Calculate {
         }
         return false;
     }
+
+    public int getAmount() {
+        return amount;
+    }
 }
