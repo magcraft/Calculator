@@ -1,11 +1,15 @@
 public class Calculate {
     int amount;
 
-    public Calculate(int amount) {
-        this.amount = amount;
+    public Calculate() {
+        this.amount = 0;
     }
 
     void apply(int amount) {
-        this.amount = 5;
+        this.amount = amount;
+    }
+
+    void add(int amount) {
+        this.amount += amount;
     }
 }
