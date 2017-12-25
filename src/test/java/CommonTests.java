@@ -63,4 +63,11 @@ public class CommonTests {
         assertFalse(calculate.divide(0));
     }
 
+    @Test
+    public void substractTest() {
+        Calculate calculate = new Calculate();
+        calculate.apply(10);
+        calculate.subtract(5);
+        assertTrue(calculate.equals(5));
+    }
 }
