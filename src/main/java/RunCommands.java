@@ -28,6 +28,13 @@ public class RunCommands {
                     case "ADD":
                         calculate.add(getAmount(currentCommand));
                         break;
+                    case "MULTIPLY":
+                        calculate.multiply(getAmount(currentCommand));
+                        break;
+
+                    default:
+                        System.out.println(String.format("Sorry command '%s' is not supported", whatWeDo));
+                        break;
                 }
 
             } else {

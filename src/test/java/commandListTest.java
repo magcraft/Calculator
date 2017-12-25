@@ -36,4 +36,17 @@ public class commandListTest {
         assertEquals(expected, acctual);
     }
 
+    @Test
+    public void firstExampleFromListTest() {
+        int expected = 18;
+        LinkedList<String> myList = new LinkedList<>();
+        myList.add("add 2");
+        myList.add("multiply 3");
+        myList.add("apply 4");
+
+        int acctual = RunCommands.runCommands(myList);
+        assertEquals(expected, acctual);
+    }
+
+
 }
