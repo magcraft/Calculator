@@ -8,6 +8,11 @@ public class Calculate {
         this.newObject = true;
     }
 
+    private Calculate(int amount) {
+        this.amount = amount;
+        this.newObject = false;
+    }
+
     private boolean isNew() {
         return this.newObject;
     }
@@ -17,8 +22,7 @@ public class Calculate {
     }
 
     public boolean equals(int input) {
-        Calculate newOne = new Calculate();
-        newOne.apply(input);
+        Calculate newOne = new Calculate(input);
         return amount == newOne.amount;
     }
 
@@ -26,7 +30,7 @@ public class Calculate {
         if (isNew()) {
             this.amount = amount;
             this.newObject = false;
-            return true;
+            return equals(amount);
         }
         return false;
     }
