@@ -1,8 +1,9 @@
 import java.util.LinkedList;
 
 public class RunCommands {
-    private static final int COMMAND_ARGUMENTS = 2;
     private static final String PARAMETER_DIVIDER = " ";
+    private static final int COMMAND_ARGUMENTS = 2;
+    private static final int COMMAND_INDEX = 0;
     private static final int PARAMETER_INDEX = 1;
 
     public static int runCommands(LinkedList<String> myList) {
@@ -35,9 +36,9 @@ public class RunCommands {
     }
 
     private static boolean runTheCommand(Calculate calculate, StringBuilder errorMessage, String currentLine) {
-        String[] currentCommand = new String[COMMAND_ARGUMENTS];
+        String[] currentCommand;
         currentCommand = getSplitMyCommand(currentLine);
-        String whatWeDo = currentCommand[0].toUpperCase();
+        String whatWeDo = currentCommand[COMMAND_INDEX].toUpperCase();
         int amount = getAmount(currentCommand);
         boolean passed;
         switch (whatWeDo) {
