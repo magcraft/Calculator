@@ -6,7 +6,7 @@ public class printHelpMessage {
         helpMessage.append("This program requires an argument for work." + nextLine);
         helpMessage.append(nextLine);
         helpMessage.append("\tFor example look at the command:" + nextLine);
-        helpMessage.append("\t\t'java Main example.cvs'" + nextLine);
+        helpMessage.append("\t\t'java Calculator example.cvs'" + nextLine);
         helpMessage.append("\twhere:" + nextLine);
         helpMessage.append("\t\tjava - JVM which will execute the application;" + nextLine);
         helpMessage.append("\t\tMain - this is a class which runs the program;" + nextLine);
@@ -15,7 +15,7 @@ public class printHelpMessage {
         helpMessage.append("\tProgram supports next commands:" + nextLine);
         helpMessage.append("\t\t- add N - where N is a number for adding" + nextLine);
         helpMessage.append("\t\t- multiply N - where N is a number for multiple" + nextLine);
-        helpMessage.append("\t\t- divide N - N is a number for dividing, can not be equal Zero" + nextLine);
+        helpMessage.append("\t\t- divide N - N is a number for dividing, must not be equal 0 (zero)" + nextLine);
         helpMessage.append("\t\t- subtract N - where N is a number for subtracting" + nextLine);
         helpMessage.append("\t\t- apply N - where N is a number which starts a calculation." + nextLine);
         helpMessage.append("\t\t\tThis command can be the only one in each file." + nextLine);
