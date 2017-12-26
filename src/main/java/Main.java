@@ -28,6 +28,7 @@ public class Main {
             }
         } else {
             System.out.println("Argument is missing");
+            System.out.println(printHelpMessage.getMessage());
         }
     }
 }
