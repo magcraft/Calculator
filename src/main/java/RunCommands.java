@@ -22,7 +22,7 @@ public class RunCommands {
         this.passed = passed;
     }
 
-    public boolean isPassed() {
+    private boolean isPassed() {
         return passed;
     }
 
@@ -77,7 +77,6 @@ public class RunCommands {
 
             default:
                 errorMessage.append(String.format("Sorry the '%s' is not supported", whatWeDo));
-                errorMessage.append(System.getProperty("line.separator"));
                 setPassed(false);
                 break;
         }
