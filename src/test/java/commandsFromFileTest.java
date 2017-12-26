@@ -30,7 +30,7 @@ public class commandsFromFileTest {
         String fileName = "ApplyTest_2.csv";
         LinkedList<String> expectedList = new LinkedList<>();
         expectedList.add("add 2");
-        expectedList.add("multilpy 3");
+        expectedList.add("multiply 3");
         expectedList.add("Apply 4");
         createFile(fileName, expectedList);
 
@@ -38,6 +38,22 @@ public class commandsFromFileTest {
         LinkedList<String> myList = fileHandler.readFile();
 
         assertEquals(Arrays.toString(expectedList.toArray()), Arrays.toString(myList.toArray()));
+        deleteFile(fileName);
+    }
+
+    @Test
+    public void readSeveralLinesFromFileAndCalculateTest() {
+        String fileName = "ApplyTest_3.csv";
+        int expectedInt = 18;
+        LinkedList<String> expectedList = new LinkedList<>();
+        expectedList.add("add 2");
+        expectedList.add("multiply 3");
+        expectedList.add("Apply 4");
+        createFile(fileName, expectedList);
+
+        FileHandler fileHandler = new FileHandler(fileName);
+
+        assertEquals(expectedInt, RunCommands.runCommands(fileHandler.readFile()));
         deleteFile(fileName);
     }
 
