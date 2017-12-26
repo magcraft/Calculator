@@ -13,7 +13,11 @@ public class FileHandler {
     public LinkedList<String> readFile() {
         LinkedList<String> dataFromFile = new LinkedList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(this.fileName))) {
-            dataFromFile.add(reader.readLine());
+            String lineFromFile = reader.readLine();
+            while (lineFromFile != null) {
+                dataFromFile.add(lineFromFile);
+                lineFromFile = reader.readLine();
+            }
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
