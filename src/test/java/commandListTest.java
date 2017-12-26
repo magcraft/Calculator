@@ -26,11 +26,22 @@ public class commandListTest {
     }
 
     @Test
-    public void wrongCommand2FormatTest() {
+    public void wrongCommandFormat2Test() {
         int expected = -1;
         LinkedList<String> myList = new LinkedList<>();
         myList.add("add ");
         myList.add("apply 1");
+        int acctual = RunCommands.runCommands(myList);
+        assertEquals(expected, acctual);
+    }
+
+    @Test
+    public void listWitWrongCommandTest() {
+        int expected = -1;
+        LinkedList<String> myList = new LinkedList<>();
+        myList.add("addee 1");
+        myList.add("apply 4");
+
         int acctual = RunCommands.runCommands(myList);
         assertEquals(expected, acctual);
     }
@@ -95,7 +106,7 @@ public class commandListTest {
     }
 
     @Test
-    public void divideByZero() {
+    public void divideByZeroTest() {
         int expected = -1;
         LinkedList<String> myList = new LinkedList<>();
         myList.add("divide 0");

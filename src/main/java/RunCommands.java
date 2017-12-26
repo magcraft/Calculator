@@ -7,7 +7,6 @@ public class RunCommands {
 
     public static int runCommands(LinkedList<String> myList) {
         Calculate calculate = new Calculate();
-        String[] currentCommand = new String[COMMAND_ARGUMENTS];
         boolean passed;
         StringBuilder errorMessage = new StringBuilder();
 
@@ -16,27 +15,7 @@ public class RunCommands {
             for (int i = 0; i < myList.size()-1; i++) {
                 String currentLine = myList.get(i);
                 if (commandFormatIsOk(currentLine)) {
-                    currentCommand = getSplitMyCommand(currentLine);
-                    String whatWeDo = currentCommand[0].toUpperCase();
-                    int amount = getAmount(currentCommand);
-                    switch (whatWeDo) {
-                        case "ADD":
-                            passed = calculate.add(amount);
-                            break;
-                        case "MULTIPLY":
-                            passed = calculate.multiply(amount);
-                            break;
-                        case "SUBTRACT":
-                            passed = calculate.subtract(amount);
-                            break;
-                        case "DIVIDE":
-                            passed = calculate.divide(amount);
-                            break;
-
-                        default:
-                            errorMessage.append(String.format("Sorry command '%s' is not supported", whatWeDo));
-                            break;
-                    }
+                    passed = runTheCommand(calculate, errorMessage, currentLine);
                     if (!(passed)) {
                         errorMessage.append(String.format("Something is wrong, with command '%s'", currentLine));
                         break;
@@ -53,6 +32,35 @@ public class RunCommands {
             System.out.println(errorMessage.toString());
         }
         return -1;
+    }
+
+    private static boolean runTheCommand(Calculate calculate, StringBuilder errorMessage, String currentLine) {
+        String[] currentCommand = new String[COMMAND_ARGUMENTS];
+        currentCommand = getSplitMyCommand(currentLine);
+        String whatWeDo = currentCommand[0].toUpperCase();
+        int amount = getAmount(currentCommand);
+        boolean passed;
+        switch (whatWeDo) {
+            case "ADD":
+                passed = calculate.add(amount);
+                break;
+            case "MULTIPLY":
+                passed = calculate.multiply(amount);
+                break;
+            case "SUBTRACT":
+                passed = calculate.subtract(amount);
+                break;
+            case "DIVIDE":
+                passed = calculate.divide(amount);
+                break;
+
+            default:
+                errorMessage.append(String.format("Sorry the '%s' is not supported", whatWeDo));
+                errorMessage.append(System.getProperty("line.separator"));
+                passed = false;
+                break;
+        }
+        return passed;
     }
 
     private static boolean proceedApply(LinkedList<String> myList, Calculate calculate) {
