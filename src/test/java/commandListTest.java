@@ -12,7 +12,8 @@ public class commandListTest {
         LinkedList<String> myList = new LinkedList<>();
         myList.add("apply 3");
 
-        int actual = RunCommands.runCommands(myList);
+        RunCommands runCommands = new RunCommands(new Calculate(), myList);
+        int actual = runCommands.runCommands();
         assertEquals(expected, actual);
     }
 
@@ -21,8 +22,10 @@ public class commandListTest {
         int expected = -1;
         LinkedList<String> myList = new LinkedList<>();
         myList.add("apply ");
-        int acctual = RunCommands.runCommands(myList);
-        assertEquals(expected, acctual);
+
+        RunCommands runCommands = new RunCommands(new Calculate(), myList);
+        int actual = runCommands.runCommands();
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -31,8 +34,10 @@ public class commandListTest {
         LinkedList<String> myList = new LinkedList<>();
         myList.add("add ");
         myList.add("apply 1");
-        int acctual = RunCommands.runCommands(myList);
-        assertEquals(expected, acctual);
+
+        RunCommands runCommands = new RunCommands(new Calculate(), myList);
+        int actual = runCommands.runCommands();
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -42,8 +47,9 @@ public class commandListTest {
         myList.add("addee 1");
         myList.add("apply 4");
 
-        int acctual = RunCommands.runCommands(myList);
-        assertEquals(expected, acctual);
+        RunCommands runCommands = new RunCommands(new Calculate(), myList);
+        int actual = runCommands.runCommands();
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -52,8 +58,10 @@ public class commandListTest {
         LinkedList<String> myList = new LinkedList<>();
         myList.add("apply 1");
         myList.add("add 2");
-        int acctual = RunCommands.runCommands(myList);
-        assertEquals(expected, acctual);
+
+        RunCommands runCommands = new RunCommands(new Calculate(), myList);
+        int actual = runCommands.runCommands();
+        assertEquals(expected, actual);
     }
 
 
@@ -64,8 +72,9 @@ public class commandListTest {
         myList.add("add 2");
         myList.add("apply 3");
 
-        int acctual = RunCommands.runCommands(myList);
-        assertEquals(expected, acctual);
+        RunCommands runCommands = new RunCommands(new Calculate(), myList);
+        int actual = runCommands.runCommands();
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -76,8 +85,9 @@ public class commandListTest {
         myList.add("multiply 3");
         myList.add("apply 4");
 
-        int acctual = RunCommands.runCommands(myList);
-        assertEquals(expected, acctual);
+        RunCommands runCommands = new RunCommands(new Calculate(), myList);
+        int actual = runCommands.runCommands();
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -87,8 +97,9 @@ public class commandListTest {
         myList.add("multiply 9");
         myList.add("apply 5");
 
-        int acctual = RunCommands.runCommands(myList);
-        assertEquals(expected, acctual);
+        RunCommands runCommands = new RunCommands(new Calculate(), myList);
+        int actual = runCommands.runCommands();
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -101,8 +112,9 @@ public class commandListTest {
         myList.add("divide 4");
         myList.add("apply 4");
 
-        int acctual = RunCommands.runCommands(myList);
-        assertEquals(expected, acctual);
+        RunCommands runCommands = new RunCommands(new Calculate(), myList);
+        int actual = runCommands.runCommands();
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -112,7 +124,8 @@ public class commandListTest {
         myList.add("divide 0");
         myList.add("apply 4");
 
-        int acctual = RunCommands.runCommands(myList);
-        assertEquals(expected, acctual);
+        RunCommands runCommands = new RunCommands(new Calculate(), myList);
+        int actual = runCommands.runCommands();
+        assertEquals(expected, actual);
     }
 }

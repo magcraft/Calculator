@@ -52,8 +52,8 @@ public class commandsFromFileTest {
         createFile(fileName, expectedList);
 
         FileHandler fileHandler = new FileHandler(fileName);
-
-        assertEquals(expectedInt, RunCommands.runCommands(fileHandler.readFile()));
+        RunCommands runCommands = new RunCommands(new Calculate(), fileHandler.readFile());
+        assertEquals(expectedInt, runCommands.runCommands());
         deleteFile(fileName);
     }
 
