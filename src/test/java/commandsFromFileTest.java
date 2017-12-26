@@ -1,11 +1,13 @@
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.LinkedList;
+
+import static org.junit.Assert.assertEquals;
 
 public class commandsFromFileTest {
 
@@ -20,8 +22,7 @@ public class commandsFromFileTest {
         LinkedList<String> myList = fileHandler.readFile();
         deleteFile(fileName);
 
-        Assert.assertArrayEquals(expectedList.toArray(), myList.toArray());
-
+        assertEquals(Arrays.toString(expectedList.toArray()), Arrays.toString(myList.toArray()));
     }
 
     private void deleteFile(String fileName) {
